@@ -1,3 +1,33 @@
+import React from "react";
+import { useGuest } from "./useGuest";
+import GuestList from "./components/GuestList";
+import GuestDetails from "./components/GuestDetails"
+
+
 export default function App() {
-  return <></>;
+  const {
+    guests,
+    selectedGuestId,
+    setSelectedGuestId,
+    guestDetails,
+    loading,
+    error,
+  } = useGuest();
+
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error: {error.message}</p>
+
+  return ( 
+  <>
+  <h1>Fullstack Convention Guest Directory</h1>
+  {selectedGuestId && guestDetails ? (
+    <GuestDetails
+    guest= {guestDetails}
+    onBack={() => setSelectedGuestId(null)}
+    />
+  ) : {
+    <GuestList guests={guests} onSelect={setSelectedGuestId} />
+  }}
+  </> 
+  );
 }
