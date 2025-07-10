@@ -15,13 +15,16 @@ export default function App() {
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error.message}</p>;
+  if (!guests || !Array.isArray(guests)) {
+    return <p>Loading guests...</p>;
+  }
 
   return (
     <>
       <h1>Fullstack Convention Guest Directory</h1>
       {selectedGuestId && guestDetails ? (
         <GuestDetails
-          guest={guestDetails}
+          guestDetails={guestDetails}
           onBack={() => setSelectedGuestId(null)}
         />
       ) : (
