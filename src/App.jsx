@@ -2,6 +2,7 @@ import React from "react";
 import { useGuest } from "./useGuest";
 import GuestList from "./components/GuestList";
 import GuestDetails from "./components/GuestDetails";
+import "./index.css";
 
 export default function App() {
   const {
