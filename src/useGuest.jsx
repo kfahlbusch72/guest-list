@@ -38,7 +38,7 @@ export function useGuest() {
     const fetchGuestDetails = async () => {
       setLoading(true);
       try {
-        const response = await fetch(`${API}/${selectedGuestId}`);
+        const response = await fetch(`${API}/guests/${selectedGuestId}`);
         if (!response.ok) throw Error("Failed to fetch guest details");
         const result = await response.json();
         setGuestDetails(result.data);

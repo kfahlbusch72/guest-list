@@ -24,7 +24,7 @@ export default function App() {
       <h1>Fullstack Convention Guest Directory</h1>
       {selectedGuestId && guestDetails ? (
         <GuestDetails
-          guestDetails={guestDetails}
+          guest={guestDetails}
           onBack={() => setSelectedGuestId(null)}
         />
       ) : (
