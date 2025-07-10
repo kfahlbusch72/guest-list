@@ -1,8 +1,7 @@
 import React from "react";
 import { useGuest } from "./useGuest";
 import GuestList from "./components/GuestList";
-import GuestDetails from "./components/GuestDetails"
-
+import GuestDetails from "./components/GuestDetails";
 
 export default function App() {
   const {
@@ -15,19 +14,19 @@ export default function App() {
   } = useGuest();
 
   if (loading) return <p>Loading...</p>;
-  if (error) return <p>Error: {error.message}</p>
+  if (error) return <p>Error: {error.message}</p>;
 
-  return ( 
-  <>
-  <h1>Fullstack Convention Guest Directory</h1>
-  {selectedGuestId && guestDetails ? (
-    <GuestDetails
-    guest= {guestDetails}
-    onBack={() => setSelectedGuestId(null)}
-    />
-  ) : {
-    <GuestList guests={guests} onSelect={setSelectedGuestId} />
-  }}
-  </> 
+  return (
+    <>
+      <h1>Fullstack Convention Guest Directory</h1>
+      {selectedGuestId && guestDetails ? (
+        <GuestDetails
+          guest={guestDetails}
+          onBack={() => setSelectedGuestId(null)}
+        />
+      ) : (
+        <GuestList guests={guests} onSelectGuest={setSelectedGuestId} />
+      )}
+    </>
   );
 }
